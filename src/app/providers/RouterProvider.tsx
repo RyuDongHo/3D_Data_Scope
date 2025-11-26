@@ -1,0 +1,15 @@
+/**
+ * Router Provider
+ * React Router 설정
+ */
+
+import { BrowserRouter } from 'react-router-dom';
+import { type ReactNode } from 'react';
+
+interface RouterProviderProps {
+  children: ReactNode;
+}
+
+export const RouterProvider = ({ children }: RouterProviderProps) => {
+  return <BrowserRouter>{children}</BrowserRouter>;
+};

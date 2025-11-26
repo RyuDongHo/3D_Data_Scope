@@ -1,74 +1,220 @@
-# React + TypeScript + Vite
+# 3D Data Scope 📊
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> Transform your CSV data into stunning 3D visualizations
 
-Currently, two official plugins are available:
+An interactive web-based platform for visualizing and exploring CSV data in 3D space. Upload your data, map columns to axes, and explore patterns in an immersive 3D environment.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![Version](https://img.shields.io/badge/version-0.4.0-blue)
+![React](https://img.shields.io/badge/React-19.1.1-61dafb?logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.6-3178c6?logo=typescript)
+![Three.js](https://img.shields.io/badge/Three.js-0.179-black?logo=three.js)
+![License](https://img.shields.io/badge/license-MIT-green)
 
-## React Compiler
+## ✨ Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 🚀 Core Functionality
+- **CSV Upload**: Drag & drop or file selection with up to 50MB support
+- **Sample Data Trial**: Instantly try the app with pre-loaded sample data
+- **Smart Mapping**: Map any 3 numeric columns to X/Y/Z axes
+- **Color Encoding**: Optional 4th column for color-coded visualization
+- **3D Visualization**: Real-time rendering using Three.js and React Three Fiber
 
-## Expanding the ESLint configuration
+### 🎮 Interactive Controls
+- **Camera Controls**: Rotate, zoom, and pan with intuitive mouse/touch controls
+- **Real-time Adjustments**: Live GUI controls for:
+  - Point size and opacity
+  - Point spacing and labels
+  - Grid and axis display
+  - Plane intersections (XZ/YZ)
+- **Data Preview**: View your data in table format before visualization
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 🎨 User Experience
+- **Fully Responsive**: Works seamlessly on desktop, tablet, and mobile
+- **English Interface**: Complete English localization
+- **Clean Design**: Modern, intuitive UI with Tailwind CSS
+- **Fast Loading**: Optimized for large datasets
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🛠️ Tech Stack
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Frontend Framework
+- **React 19.1.1** with TypeScript
+- **Vite** for blazing-fast development
+- **React Router DOM** for navigation
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 3D Rendering
+- **Three.js 0.179** - WebGL rendering engine
+- **React Three Fiber** - React renderer for Three.js
+- **React Three Drei** - Useful helpers for R3F
+- **Leva** - Real-time GUI controls
+
+### State Management & Data
+- **Zustand** - Lightweight state management
+- **PapaParse** - CSV parsing
+- **D3.js** - Color scales and statistics
+
+### Styling
+- **Tailwind CSS 4.1** - Utility-first CSS framework
+
+## 📁 Project Structure
+
+This project follows **Feature-Sliced Design (FSD)** architecture:
+
+```
+src/
+├── app/              # App initialization & routing
+├── pages/            # Page-level components
+│   ├── UploadPage/   # File upload & sample data
+│   ├── MappingPage/  # Axis mapping configuration
+│   └── ViewerPage/   # 3D visualization
+├── widgets/          # Complex UI blocks
+│   ├── FileUploader/
+│   ├── AxisMapper/
+│   ├── SceneViewer/
+│   └── CSVTutorial/
+└── shared/           # Reusable modules
+    ├── ui/           # Common components
+    ├── lib/          # Utilities (CSV parser, validation)
+    ├── types/        # TypeScript definitions
+    └── zustand/      # Global state stores
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🚀 Getting Started
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Prerequisites
+- Node.js 18+ and npm/yarn/pnpm
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Installation
+
+1. **Clone the repository**
+```bash
+git clone https://github.com/RyuDongHo/3D_Data_Scope.git
+cd 3D_Data_Scope
 ```
-# 3D_Data_Scope
+
+2. **Install dependencies**
+```bash
+npm install
+```
+
+3. **Start development server**
+```bash
+npm run dev
+```
+
+4. **Open in browser**
+```
+http://localhost:5173
+```
+
+### Build for Production
+
+```bash
+npm run build
+npm run preview  # Preview production build
+```
+
+## 📊 Usage
+
+### 1. Upload Your Data
+- Click "Choose File" or drag & drop a CSV file (max 50MB)
+- Or try "Try with Sample Data" for instant demo
+
+### 2. Map Your Axes
+- Select 3 numeric columns for X, Y, Z axes
+- Optionally choose a 4th column for color encoding
+- View data statistics and preview
+
+### 3. Explore in 3D
+- Rotate: Left mouse button + drag
+- Zoom: Mouse wheel
+- Pan: Right mouse button + drag
+- Adjust visualization parameters with GUI controls
+
+## 📋 CSV Format Guidelines
+
+### Requirements
+- At least **3 numeric columns** (for X, Y, Z axes)
+- Maximum file size: **50MB**
+- UTF-8 encoding recommended
+
+### Example CSV
+```csv
+Name,Age,Height,Weight,Grade
+John,25,175.5,70.2,A
+Jane,30,162.3,55.8,B
+Mike,28,180.1,75.5,A
+Sarah,26,168.0,60.1,B
+```
+
+In this example, Age, Height, and Weight can be used as X/Y/Z axes.
+
+## 🔧 Development
+
+### Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
+
+### Key Dependencies
+
+```json
+{
+  "react": "^19.1.1",
+  "three": "^0.179.1",
+  "@react-three/fiber": "^9.3.0",
+  "@react-three/drei": "^10.7.4",
+  "zustand": "^5.0.8",
+  "papaparse": "^5.4.1",
+  "leva": "^0.10.0",
+  "react-router-dom": "^7.8.2"
+}
+```
+
+## 🗺️ Roadmap
+
+### ✅ Completed (v0.4)
+- [x] MVP implementation (Upload → Mapping → Viewer)
+- [x] Full English localization
+- [x] Sample data trial feature
+- [x] Clean UI (removed overlay panels)
+- [x] Flexible CSV input (header optional)
+- [x] SEO optimization
+
+### 🔄 In Progress
+- [ ] Range-based filtering (FilterPanel)
+- [ ] Visual customization panel (colors, themes)
+
+### 📅 Planned (v1.0+)
+- [ ] Outlier detection (IQR, Z-score)
+- [ ] Clustering analysis (K-means, DBSCAN)
+- [ ] PNG export
+- [ ] Filtered CSV export
+- [ ] Point selection and inspection
+- [ ] Animation and transitions
+- [ ] Multi-dataset support
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+## 👤 Author
+
+**RyuDongHo**
+- GitHub: [@RyuDongHo](https://github.com/RyuDongHo)
+
+## 🙏 Acknowledgments
+
+- [Three.js](https://threejs.org/) for 3D rendering
+- [React Three Fiber](https://docs.pmnd.rs/react-three-fiber) for React integration
+- [PapaParse](https://www.papaparse.com/) for CSV parsing
+- [Zustand](https://docs.pmnd.rs/zustand) for state management
+
+---
+
+**Made with ❤️ for data visualization enthusiasts**
