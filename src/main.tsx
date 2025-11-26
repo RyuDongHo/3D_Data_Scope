@@ -8,12 +8,14 @@ import { ErrorBoundary } from './app/providers/ErrorBoundary';
 import { RouterProvider } from './app/providers/RouterProvider';
 import { App } from './app/index';
 import './app/styles/global.css';
+import { Analytics } from "@vercel/analytics/react";
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ErrorBoundary>
       <RouterProvider>
         <App />
+        <Analytics />
       </RouterProvider>
     </ErrorBoundary>
   </StrictMode>
