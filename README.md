@@ -1,220 +1,132 @@
 # 3D Data Scope 📊
 
-> Transform your CSV data into stunning 3D visualizations
+> 순수 직관으로 만든 바이브 코딩 3D 데이터 시각화 놀이터
 
-An interactive web-based platform for visualizing and exploring CSV data in 3D space. Upload your data, map columns to axes, and explore patterns in an immersive 3D environment.
+이것은 **100% 바이브 코딩 프로젝트**입니다 - 오로지 감각과 실험, 반복적인 개선으로만 만들어졌습니다. 철저한 계획 따윈 없고, 그냥 코드 짜고, 보고, 고치고, 작동시키는 것의 반복. 전체 아키텍처는 개발 과정에서 유기적으로 진화했습니다.
 
 ![Version](https://img.shields.io/badge/version-0.4.0-blue)
+![Vibe](https://img.shields.io/badge/코딩-100%25%20바이브-ff69b4)
 ![React](https://img.shields.io/badge/React-19.1.1-61dafb?logo=react)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.6-3178c6?logo=typescript)
 ![Three.js](https://img.shields.io/badge/Three.js-0.179-black?logo=three.js)
-![License](https://img.shields.io/badge/license-MIT-green)
 
-## ✨ Features
+## 🎨 뭘 하는 앱인가요
 
-### 🚀 Core Functionality
-- **CSV Upload**: Drag & drop or file selection with up to 50MB support
-- **Sample Data Trial**: Instantly try the app with pre-loaded sample data
-- **Smart Mapping**: Map any 3 numeric columns to X/Y/Z axes
-- **Color Encoding**: Optional 4th column for color-coded visualization
-- **3D Visualization**: Real-time rendering using Three.js and React Three Fiber
+CSV 업로드 → 컬럼을 3D 축에 매핑 → 3D 공간에서 데이터 탐색
 
-### 🎮 Interactive Controls
-- **Camera Controls**: Rotate, zoom, and pan with intuitive mouse/touch controls
-- **Real-time Adjustments**: Live GUI controls for:
-  - Point size and opacity
-  - Point spacing and labels
-  - Grid and axis display
-  - Plane intersections (XZ/YZ)
-- **Data Preview**: View your data in table format before visualization
+끝. 심플하고, 시각적이고, 인터랙티브합니다.
 
-### 🎨 User Experience
-- **Fully Responsive**: Works seamlessly on desktop, tablet, and mobile
-- **English Interface**: Complete English localization
-- **Clean Design**: Modern, intuitive UI with Tailwind CSS
-- **Fast Loading**: Optimized for large datasets
+## 🧠 바이브 코딩 접근법
 
-## 🛠️ Tech Stack
+이 프로젝트는 **순수 실험과 반복**으로 만들어졌습니다:
+- 상세한 설계 문서나 목업 없음
+- 코드 먼저, 리팩토링은 나중에 (혹은 절대 안 함)
+- "보기 좋나?" → 배포
+- "작동하나?" → 충분함
+- 기능 아이디어는 구현 중에 떠오름
+- 아키텍처는 리팩토링 과정에서 유기적으로 진화
 
-### Frontend Framework
-- **React 19.1.1** with TypeScript
-- **Vite** for blazing-fast development
-- **React Router DOM** for navigation
+결과: 실제로 쓰기 꽤 괜찮은 느낌의 3D 데이터 시각화 앱.
 
-### 3D Rendering
-- **Three.js 0.179** - WebGL rendering engine
-- **React Three Fiber** - React renderer for Three.js
-- **React Three Drei** - Useful helpers for R3F
-- **Leva** - Real-time GUI controls
+## 🛠️ 기술 스택
 
-### State Management & Data
-- **Zustand** - Lightweight state management
-- **PapaParse** - CSV parsing
-- **D3.js** - Color scales and statistics
+**코어:** React 19 + TypeScript + Vite  
+**3D:** Three.js + React Three Fiber + Drei  
+**상태관리:** Zustand (간단해서)  
+**스타일링:** Tailwind CSS (유틸리티 올인)  
+**데이터:** CSV는 PapaParse, 컬러는 D3
 
-### Styling
-- **Tailwind CSS 4.1** - Utility-first CSS framework
+## 📁 프로젝트 구조
 
-## 📁 Project Structure
-
-This project follows **Feature-Sliced Design (FSD)** architecture:
+*우연히* Feature-Sliced Design을 따르게 됨:
 
 ```
 src/
-├── app/              # App initialization & routing
-├── pages/            # Page-level components
-│   ├── UploadPage/   # File upload & sample data
-│   ├── MappingPage/  # Axis mapping configuration
-│   └── ViewerPage/   # 3D visualization
-├── widgets/          # Complex UI blocks
-│   ├── FileUploader/
-│   ├── AxisMapper/
-│   ├── SceneViewer/
-│   └── CSVTutorial/
-└── shared/           # Reusable modules
-    ├── ui/           # Common components
-    ├── lib/          # Utilities (CSV parser, validation)
-    ├── types/        # TypeScript definitions
-    └── zustand/      # Global state stores
+├── pages/     # Upload → Mapping → Viewer 플로우
+├── widgets/   # 실제 UI 블록들
+└── shared/    # 어디서나 재사용되는 것들
 ```
 
-## 🚀 Getting Started
+계획한 게 아니라 - 기능 추가하고 리팩토링하다 보니 이렇게 된 구조.
 
-### Prerequisites
-- Node.js 18+ and npm/yarn/pnpm
+## 🚀 시작하기
 
-### Installation
-
-1. **Clone the repository**
 ```bash
 git clone https://github.com/RyuDongHo/3D_Data_Scope.git
 cd 3D_Data_Scope
-```
-
-2. **Install dependencies**
-```bash
 npm install
-```
-
-3. **Start development server**
-```bash
 npm run dev
 ```
 
-4. **Open in browser**
-```
-http://localhost:5173
-```
+브라우저에서 `http://localhost:5173` 열기
 
-### Build for Production
+### 프로덕션 빌드
 
 ```bash
 npm run build
-npm run preview  # Preview production build
+npm run preview
 ```
 
-## 📊 Usage
+## 💡 사용법
 
-### 1. Upload Your Data
-- Click "Choose File" or drag & drop a CSV file (max 50MB)
-- Or try "Try with Sample Data" for instant demo
+최소 3개의 숫자 컬럼이 있는 CSV를 업로드하세요. 3D로 탐색하세요. 그게 바이브입니다.
 
-### 2. Map Your Axes
-- Select 3 numeric columns for X, Y, Z axes
-- Optionally choose a 4th column for color encoding
-- View data statistics and preview
+## 🎯 바이브 코딩 여정
 
-### 3. Explore in 3D
-- Rotate: Left mouse button + drag
-- Zoom: Mouse wheel
-- Pan: Right mouse button + drag
-- Adjust visualization parameters with GUI controls
+**1단계: "일단 작동시키자"**  
+→ 기본 CSV 업로드 + 3D 산점도  
+→ 모든 게 하드코딩, 추상화 제로  
+→ 근데 작동함!
 
-## 📋 CSV Format Guidelines
+**2단계: "이 코드 엉망이네"**  
+→ Zustand 스토어로 리팩토링  
+→ 컴포넌트를 위젯으로 분리  
+→ 제대로 된 TypeScript 타입 추가  
+→ 여전히 바이브 중, 그냥 좀 더 정리됨
 
-### Requirements
-- At least **3 numeric columns** (for X, Y, Z axes)
-- Maximum file size: **50MB**
-- UTF-8 encoding recommended
+**3단계: "쓸만하게 만들자"**  
+→ 샘플 데이터 버튼 (UX 승리!)  
+→ 영어 번역  
+→ UI 정리  
+→ 불필요한 패널 제거  
+→ SEO 최적화
 
-### Example CSV
-```csv
-Name,Age,Height,Weight,Grade
-John,25,175.5,70.2,A
-Jane,30,162.3,55.8,B
-Mike,28,180.1,75.5,A
-Sarah,26,168.0,60.1,B
-```
+**현재 단계: "이거... 아키텍처인가?"**  
+→ Feature-Sliced Design이 자연스럽게 생김  
+→ 포괄적인 테스트 인프라 추가  
+→ 88개 테스트 시나리오 계획  
+→ 그래도 여전히 100% 바이브
 
-In this example, Age, Height, and Weight can be used as X/Y/Z axes.
+## 🗺️ 미래의 바이브
 
-## 🔧 Development
+아마 추가할 것들:
+- 포인트 선택/검사
+- PNG로 내보내기
+- 필터링 컨트롤
+- 클러스터링 알고리즘
+- 더 많은 테마
 
-### Available Scripts
+안 할 수도. 느낌 오는 대로 보자구요.
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
-- `npm run lint` - Run ESLint
+## 💭 바이브 코딩에서 배운 것들
 
-### Key Dependencies
+**잘 된 것:**
+- 빠른 반복 주기
+- 실제 사용에 의해 주도되는 기능
+- 분석 마비 없음
+- 유기적인 아키텍처 출현
 
-```json
-{
-  "react": "^19.1.1",
-  "three": "^0.179.1",
-  "@react-three/fiber": "^9.3.0",
-  "@react-three/drei": "^10.7.4",
-  "zustand": "^5.0.8",
-  "papaparse": "^5.4.1",
-  "leva": "^0.10.0",
-  "react-router-dom": "^7.8.2"
-}
-```
+**혼란스러웠던 것:**
+- 엄청난 리팩토링
+- TypeScript가 계속 싸움 걸어옴
+- "어 이거 어떻게 작동하는 거지?"
+- Git 히스토리가 난장판
 
-## 🗺️ Roadmap
+**결론:** 10점 만점에 10점, 또 바이브 코딩 할 거임
 
-### ✅ Completed (v0.4)
-- [x] MVP implementation (Upload → Mapping → Viewer)
-- [x] Full English localization
-- [x] Sample data trial feature
-- [x] Clean UI (removed overlay panels)
-- [x] Flexible CSV input (header optional)
-- [x] SEO optimization
+## 👤 만든 사람
 
-### 🔄 In Progress
-- [ ] Range-based filtering (FilterPanel)
-- [ ] Visual customization panel (colors, themes)
-
-### 📅 Planned (v1.0+)
-- [ ] Outlier detection (IQR, Z-score)
-- [ ] Clustering analysis (K-means, DBSCAN)
-- [ ] PNG export
-- [ ] Filtered CSV export
-- [ ] Point selection and inspection
-- [ ] Animation and transitions
-- [ ] Multi-dataset support
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## 📄 License
-
-This project is licensed under the MIT License.
-
-## 👤 Author
-
-**RyuDongHo**
-- GitHub: [@RyuDongHo](https://github.com/RyuDongHo)
-
-## 🙏 Acknowledgments
-
-- [Three.js](https://threejs.org/) for 3D rendering
-- [React Three Fiber](https://docs.pmnd.rs/react-three-fiber) for React integration
-- [PapaParse](https://www.papaparse.com/) for CSV parsing
-- [Zustand](https://docs.pmnd.rs/zustand) for state management
+**RyuDongHo** - [@RyuDongHo](https://github.com/RyuDongHo)
 
 ---
 
-**Made with ❤️ for data visualization enthusiasts**
+**100% 바이브와 0% 계획으로 만들어졌습니다** ✨
