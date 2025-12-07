@@ -139,8 +139,8 @@ describe('csvParser', () => {
       
       expect(result.success).toBe(true);
       if (result.success) {
-        expect(result.data.rows.every((row: Record<string, unknown>) => typeof row.value === 'number')).toBe(true);
-        expect(result.data.rows.every((row: Record<string, unknown>) => typeof row.id === 'number')).toBe(true);
+        expect(result.data!.rows.every((row: Record<string, unknown>) => typeof row.value === 'number')).toBe(true);
+        expect(result.data!.rows.every((row: Record<string, unknown>) => typeof row.id === 'number')).toBe(true);
       }
     });
 
@@ -151,13 +151,15 @@ describe('csvParser', () => {
       const result = await parseCSVFile(file);
       
       expect(result.success).toBe(true);
-      const numericCols = result.data?.columns.filter((c: { type: string }) => c.type === 'number').map((c: { name: string }) => c.name);
-      const stringCols = result.data?.columns.filter((c: { type: string }) => c.type === 'string').map((c: { name: string }) => c.name);
-      
-      expect(numericCols).toContain('id');
-      expect(numericCols).toContain('age');
-      expect(stringCols).toContain('name');
-      expect(stringCols).toContain('city');
+      if (result.success) {
+        const numericCols = result.data!.columns.filter((c: { type: string }) => c.type === 'number').map((c: { name: string }) => c.name);
+        const stringCols = result.data!.columns.filter((c: { type: string }) => c.type === 'string').map((c: { name: string }) => c.name);
+        
+        expect(numericCols).toContain('id');
+        expect(numericCols).toContain('age');
+        expect(stringCols).toContain('name');
+        expect(stringCols).toContain('city');
+      }
     });
 
     test('should return column statistics', async () => {
@@ -168,7 +170,7 @@ describe('csvParser', () => {
       
       expect(result.success).toBe(true);
       if (result.success) {
-        const ageCol = result.data.columns.find((c: { name: string }) => c.name === 'age');
+        const ageCol = result.data!.columns.find((c: { name: string }) => c.name === 'age');
         
         expect(ageCol?.minValue).toBe(25);
         expect(ageCol?.maxValue).toBe(30);
