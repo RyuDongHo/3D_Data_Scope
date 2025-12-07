@@ -1,63 +1,89 @@
 # 3D Data Scope 📊
 
-> 순수 직관으로 만든 바이브 코딩 3D 데이터 시각화 놀이터
-
-이것은 **100% 바이브 코딩 프로젝트**입니다 - 오로지 감각과 실험, 반복적인 개선으로만 만들어졌습니다. 철저한 계획 따윈 없고, 그냥 코드 짜고, 보고, 고치고, 작동시키는 것의 반복. 전체 아키텍처는 개발 과정에서 유기적으로 진화했습니다.
+> CSV 데이터를 3D 공간에서 탐색하는 인터랙티브 시각화 도구
 
 ![Version](https://img.shields.io/badge/version-0.4.0-blue)
-![Vibe](https://img.shields.io/badge/코딩-100%25%20바이브-ff69b4)
 ![React](https://img.shields.io/badge/React-19.1.1-61dafb?logo=react)
 ![Three.js](https://img.shields.io/badge/Three.js-0.179-black?logo=three.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.6-3178c6?logo=typescript)
 
-## 🎨 뭘 하는 앱인가요
+## 📖 개요
 
-CSV 업로드 → 컬럼을 3D 축에 매핑 → 3D 공간에서 데이터 탐색
+CSV 파일을 업로드하고, 각 컬럼을 3D 좌표축에 매핑하여 입체적으로 데이터를 탐색할 수 있는 웹 애플리케이션입니다.
 
-끝. 심플하고, 시각적이고, 인터랙티브합니다.
-
-## 🧠 바이브 코딩 접근법
-
-이 프로젝트는 **순수 실험과 반복**으로 만들어졌습니다:
-- 상세한 설계 문서나 목업 없음
-- 코드 먼저, 리팩토링은 나중에 (혹은 절대 안 함)
-- "보기 좋나?" → 배포
-- "작동하나?" → 충분함
-- 기능 아이디어는 구현 중에 떠오름
-- 아키텍처는 리팩토링 과정에서 유기적으로 진화
-
-결과: 실제로 쓰기 꽤 괜찮은 느낌의 3D 데이터 시각화 앱.
+**주요 기능:**
+- 📤 CSV 파일 업로드 및 자동 파싱
+- 🎯 컬럼별 X/Y/Z 축 매핑
+- 🎨 데이터 기반 색상 매핑
+- 🔍 3D 공간에서 자유로운 데이터 탐색
+- 📊 실시간 통계 정보 표시
 
 ## 🛠️ 기술 스택
 
-**코어:** React 19 + TypeScript + Vite  
-**3D:** Three.js + React Three Fiber + Drei  
-**상태관리:** Zustand (간단해서)  
-**스타일링:** Tailwind CSS (유틸리티 올인)  
-**데이터:** CSV는 PapaParse, 컬러는 D3
+**Frontend Framework**
+- React 19.1.1 + TypeScript 5.6
+- Vite 7.2.4 (빌드 도구)
+
+**3D Graphics**
+- Three.js 0.179
+- React Three Fiber (R3F)
+- @react-three/drei (3D 헬퍼)
+
+**State Management**
+- Zustand 5.0 (경량 상태관리)
+
+**Data Processing**
+- PapaParse (CSV 파싱)
+- D3.js (색상 스케일)
+
+**Styling**
+- Tailwind CSS 3.4
+
+**Testing**
+- Vitest 4.0 (단위 테스트)
+- React Testing Library 16.3 (컴포넌트 테스트)
+- Playwright 1.50 (E2E 테스트)
 
 ## 📁 프로젝트 구조
 
-*우연히* Feature-Sliced Design을 따르게 됨:
+Feature-Sliced Design 아키텍처를 따릅니다:
 
 ```
 src/
-├── pages/     # Upload → Mapping → Viewer 플로우
-├── widgets/   # 실제 UI 블록들
-└── shared/    # 어디서나 재사용되는 것들
+├── app/           # 애플리케이션 진입점
+├── pages/         # 페이지 컴포넌트 (Upload, Mapping, Viewer)
+├── widgets/       # 독립적인 UI 블록
+├── features/      # 비즈니스 로직 기능
+├── entities/      # 비즈니스 엔티티
+└── shared/        # 공통 유틸리티 및 설정
 ```
 
-계획한 게 아니라 - 기능 추가하고 리팩토링하다 보니 이렇게 된 구조.
+**주요 디렉토리:**
+- `pages/`: 라우팅 기반 페이지 컴포넌트
+- `widgets/`: FileUploader, AxisMapper, SceneViewer 등
+- `shared/lib/`: csvParser, validation, dataTransform 등 핵심 로직
 
 ## 🚀 시작하기
 
+### 필수 요구사항
+- Node.js 18+ 
+- npm 또는 yarn
+
+### 설치 및 실행
+
 ```bash
+# 저장소 클론
 git clone https://github.com/RyuDongHo/3D_Data_Scope.git
 cd 3D_Data_Scope
+
+# 의존성 설치
 npm install
+
+# 개발 서버 실행
 npm run dev
 ```
 
-브라우저에서 `http://localhost:5173` 열기
+브라우저에서 `http://localhost:5173` 접속
 
 ### 프로덕션 빌드
 
@@ -66,67 +92,66 @@ npm run build
 npm run preview
 ```
 
+### 테스트 실행
+
+```bash
+# 단위 테스트
+npm test
+
+# 테스트 UI
+npm run test:ui
+
+# 커버리지 리포트
+npm run test:coverage
+
+# E2E 테스트
+npm run test:e2e
+```
+
 ## 💡 사용법
 
-최소 3개의 숫자 컬럼이 있는 CSV를 업로드하세요. 3D로 탐색하세요. 그게 바이브입니다.
+1. **CSV 업로드**: 최소 3개 이상의 숫자 컬럼이 포함된 CSV 파일 업로드
+2. **축 매핑**: 각 컬럼을 X, Y, Z 축에 할당
+3. **색상 선택**: (선택사항) 데이터 포인트의 색상을 결정할 컬럼 선택
+4. **3D 탐색**: 
+   - 마우스 드래그: 카메라 회전
+   - 휠: 줌 인/아웃
+   - 우클릭 드래그: 패닝
 
-## 🎯 바이브 코딩 여정
+## 📊 테스트 커버리지
 
-**1단계: "일단 작동시키자"**  
-→ 기본 CSV 업로드 + 3D 산점도  
-→ 모든 게 하드코딩, 추상화 제로  
-→ 근데 작동함!
+현재 88개의 테스트 시나리오가 계획되어 있습니다:
 
-**2단계: "이 코드 엉망이네"**  
-→ Zustand 스토어로 리팩토링  
-→ 컴포넌트를 위젯으로 분리  
-→ 제대로 된 TypeScript 타입 추가  
-→ 여전히 바이브 중, 그냥 좀 더 정리됨
+- ✅ 단위 테스트: 35개 (csvParser, validation, dataTransform)
+- ⏳ 통합 테스트: 37개 (Zustand 스토어, 컴포넌트 통합)
+- ⏳ E2E 테스트: 6개 (전체 워크플로우)
 
-**3단계: "쓸만하게 만들자"**  
-→ 샘플 데이터 버튼 (UX 승리!)  
-→ 영어 번역  
-→ UI 정리  
-→ 불필요한 패널 제거  
-→ SEO 최적화
+자세한 내용은 `docs/auto_test_plan.md` 참조
 
-**현재 단계: "이거... 아키텍처인가?"**  
-→ Feature-Sliced Design이 자연스럽게 생김  
-→ 포괄적인 테스트 인프라 추가  
-→ 88개 테스트 시나리오 계획  
-→ 그래도 여전히 100% 바이브
+## 🏗️ 개발 히스토리
 
-## 🗺️ 미래의 바이브
+**v0.1**: 기본 CSV 업로드 + 3D 산점도  
+**v0.2**: Zustand 상태관리 도입, 컴포넌트 리팩토링  
+**v0.3**: UI/UX 개선, 샘플 데이터, 다국어 지원  
+**v0.4**: Feature-Sliced Design 적용, 테스트 인프라 구축
 
-아마 추가할 것들:
-- 포인트 선택/검사
-- PNG로 내보내기
-- 필터링 컨트롤
-- 클러스터링 알고리즘
-- 더 많은 테마
+## 🔮 로드맵
 
-안 할 수도. 느낌 오는 대로 보자구요.
+- [ ] 데이터 포인트 선택 및 상세 정보 표시
+- [ ] PNG/SVG 내보내기
+- [ ] 필터링 및 검색 기능
+- [ ] 클러스터링 알고리즘 적용
+- [ ] 다크/라이트 테마
+- [ ] 대용량 데이터 최적화
 
-## 💭 바이브 코딩에서 배운 것들
-
-**잘 된 것:**
-- 빠른 반복 주기
-- 실제 사용에 의해 주도되는 기능
-- 분석 마비 없음
-- 유기적인 아키텍처 출현
-
-**혼란스러웠던 것:**
-- 엄청난 리팩토링
-- TypeScript가 계속 싸움 걸어옴
-- "어 이거 어떻게 작동하는 거지?"
-- Git 히스토리가 난장판
-
-**결론:** 10점 만점에 10점, 또 바이브 코딩 할 거임
-
-## 👤 만든 사람
+## 👤 개발자
 
 **RyuDongHo** - [@RyuDongHo](https://github.com/RyuDongHo)
 
+## 📄 라이선스
+
+MIT License
+
 ---
 
-**100% 바이브와 0% 계획으로 만들어졌습니다** ✨
+*이 프로젝트는 100% 바이브 코딩으로 설계되었습니다.*
